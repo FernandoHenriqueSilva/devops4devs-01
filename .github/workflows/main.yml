@@ -11,7 +11,7 @@ jobs:
       - name: Contrução da Imagem Docker
         run: echo "Docker Build"
       - name: "Publicar Imagem no Docker Hub"
-        run: echo: "Docker Push"
+        run: echo "Docker Push"
 
   CD:
     runs-on: ubuntu-latest
