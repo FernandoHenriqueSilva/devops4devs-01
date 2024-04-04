@@ -106,3 +106,5 @@ dist
 *.Identifier
 
 **/image_public
+
+deployment.yaml
