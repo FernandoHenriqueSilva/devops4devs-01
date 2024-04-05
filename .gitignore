@@ -107,4 +107,4 @@ dist
 
 **/image_public
 
-deployment.yaml
+#deployment.yaml
