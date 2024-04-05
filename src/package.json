@@ -1,6 +1,6 @@
 {
   "name": "kube-news",
-  "version": "5.1.1",
+  "version": "5.2.2",
   "description": "",
   "main": "server.js",
   "scripts": {
