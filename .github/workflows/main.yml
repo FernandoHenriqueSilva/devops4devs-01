@@ -45,8 +45,8 @@ jobs:
       - name: Atualização do Manifesto
         shell: bash
         run: |
-          sed -i "s/{{AWS_ACCESS_KEY}}/${{ secrets.AWS_ACCESS_KEY }}/g" ./k8s/deployment.yaml
-          sed -i "s/{{AWS_ACCESS_SECRET}}/${{ secrets.AWS_ACCESS_SECRET }}/g" ./k8s/deployment.yaml
+          sed -i "s#{{AWS_ACCESS_KEY}}#${{ secrets.AWS_ACCESS_KEY }}#g" ./k8s/deployment.yaml
+          sed -i "s#{{AWS_ACCESS_SECRET}}#${{ secrets.AWS_ACCESS_SECRET }}#g" ./k8s/deployment.yaml
           
       - name: Executar o Deploy
         uses: Azure/k8s-deploy@v4.9
