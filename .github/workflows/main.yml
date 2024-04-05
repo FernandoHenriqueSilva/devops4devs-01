@@ -21,7 +21,7 @@ jobs:
           context: ./src
           file: ./src/Dockerfile
           push: true
-          tags: 
+          tags: |
             fernandohs99/devops4devs-news:v6
             fernandohs99/devops4devs-news:${{github.run_number}}
 
