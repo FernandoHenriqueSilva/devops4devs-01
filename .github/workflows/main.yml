@@ -29,6 +29,8 @@ jobs:
     needs: [CI]
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4.1.2
+        name: Checkout de Repositório
       - name: Configure Azure CLI
         uses: azure/login@v1
         with:
@@ -40,8 +42,16 @@ jobs:
       - name: Get AKS credentials
         run: az aks get-credentials --resource-group RG-KUBERNETES --name azcluster-devops4devs --overwrite-existing
 
-      - name: Conectar com Kubernetes
-        run: echo "Configuração do KubeConfig"
-    
+      - name: Atualização do Manifesto
+        shell: bash
+        run: |
+          sed -i "s/{{AWS_ACCESS_KEY}}/${{ secrets.AWS_ACCESS_KEY }}/g" ./k8s/deployment.yaml
+          sed -i "s/{{AWS_ACCESS_SECRET}}/${{ secrets.AWS_ACCESS_SECRET }}/g" ./k8s/deployment.yaml
+          
       - name: Executar o Deploy
-        run: echo "Kubectl Apply"
+        uses: Azure/k8s-deploy@v4.9
+        with: 
+          manifests: 
+            ./k8s/deployment.yaml
+          images: |
+            fernandohs99/devops4devs-news:${{github.run_number}}
